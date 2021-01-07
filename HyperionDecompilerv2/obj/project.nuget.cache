@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6JV45Shka8gvX5GqWIXLDYAIedZEefA+N/gaDjFRPmLSNtVbpks750jMVggBWWRNzl3Y7D+h22zLVwC+l74RYQ==",
+  "dgSpecHash": "32zzxMhK/VxY9QeCJfRDBPn5DTSNKILUHRZ6f0IhOzAZ6/rXH6F9vMJNqAB6yk6V2GN4+PcSvV7t7fHMzjUxgw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
+  "projectFilePath": "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

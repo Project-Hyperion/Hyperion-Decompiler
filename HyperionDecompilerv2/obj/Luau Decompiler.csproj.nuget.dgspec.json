@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj": {}
+    "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj": {
+    "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
+        "projectUniqueName": "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
         "projectName": "Luau Decompiler",
-        "projectPath": "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
+        "projectPath": "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\Luau Decompiler.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Max\\Desktop\\GitHub\\Luau-Decompiler\\HyperionDecompilerv2\\obj\\",
+        "outputPath": "C:\\Users\\Max\\Desktop\\Hyperion-Decompiler\\HyperionDecompilerv2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",

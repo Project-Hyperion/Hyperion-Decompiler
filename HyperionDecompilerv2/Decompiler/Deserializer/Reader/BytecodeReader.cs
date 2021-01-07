@@ -82,12 +82,19 @@ namespace HyperionDecompilerv2.Decompiler.Deserializer.Reader
         /// </summary>
         public int ReadInt32Compressed()
         {
-            int integer = ReadByte();
+            int result = 0, val2 = 0, val3;
+            byte val;
 
-            int v = integer | 0x80;
-            integer <<= 7;
+            do
+            {
+                val = Reader.ReadByte();
+                val3 = (val & 0x7F) << val2;
+                val2 += 7;
+                result |= val3;
 
-            return (integer != 0) ? v &= 0x7f : v;
+            } while (val < 0);
+
+            return result;
         }
 
         /// <summary>

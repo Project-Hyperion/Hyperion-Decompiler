@@ -72,117 +72,70 @@ namespace HyperionDecompilerv2.Decompiler.Deserializer
             IList<Function> closures = new List<Function>(size);
 
             while (closures.Count < size)
-                closures.Add(ReadClosure(closures.Count));
+                closures.Add(ReadClosure(closures.Count, size));
 
             return closures;
         }
 
-        private Function ReadClosure(int index)
+        private Function ReadClosure(int index, int max)
         {
             Function function;
+            
+            function = new Function();
 
-            if (index > 0)
+            function.maxstacksize = Reader.ReadByte();
+            function.numparams = Reader.ReadByte();
+            function.upvalues = new List<string>(Reader.ReadByte());
+            function.isvararg = Reader.ReadBoolean();
+            function.instructions = ReadInstructions();
+            function.constants = ReadConstants();
+
+            if (index + 1 != max)
             {
-                function = new Function();
+                function.closure_idx = ReadClosureIndexs();
+                function.name_idx = Reader.ReadInt32Compressed();
+                function.lineinfo = ReadLineInfo(function);
 
-                // TODO: fix this! It will work for now but it's still pretty stupid
-                IList<byte> bytes = new List<byte>();
-
-                byte b = Reader.ReadByte();
-
-                while (true)
-                {
-                    b = Reader.ReadByte();
-
-                    if ((OpCode)b == OpCode.InitVarArg
-                    || (OpCode)b == OpCode.Init)
-                        break;
-
-                    bytes.Add(b);
-                }
-
-                int size = bytes.Count;
-                function.maxstacksize = bytes[size - 6];
-                function.numparams = bytes[size - 5];
-                function.upvalues = new List<string>(bytes[size - 4]);
-                function.isvararg = Convert.ToBoolean(bytes[size - 3]);
-                function.maxstacksize = bytes[size - 2];
-
-                byte un_compressed = bytes[size - 1];
-
-                int integer = un_compressed;
-
-                int v = integer | 0x80;
-                integer <<= 7;
-
-                int compressed = (integer != 0) ? v &= 0x7f : v;
-
-                function.instructions = ReadInstructions(compressed, (OpCode)b);
-                function.constants = ReadConstants();
-            }
-            else
-            {
-                function = new Function();
-
-                function.maxstacksize = Reader.ReadByte();
-                function.numparams = Reader.ReadByte();
-                function.upvalues = new List<string>(Reader.ReadByte());
-                function.isvararg = Reader.ReadBoolean();
-                function.instructions = ReadInstructions();
-                function.constants = ReadConstants();
-            }
+                Reader.ReadBoolean();
+            }   
 
             return function;
         }
 
-        private IList<Instruction> ReadInstructions(int size, OpCode first)
+        private IList<int> ReadLineInfo(Function function)
         {
-            IList<Instruction> code = new List<Instruction>(size);
+            if (!Reader.ReadBoolean()) return new List<int>();
 
-            OpCode Op = first;
+            int size = Reader.ReadInt32Compressed();
 
-            while (code.Count < size)
+            if (size != 0)
             {
-                if (!(Op == first))
-                    Op = (OpCode)Reader.ReadByte();
+                int v92 = (int)((function.instructions.Count + 3) & 0xFFFFFFFC);
+                int k = ((function.instructions.Count - 1) >> size) + 1;
 
-                Console.WriteLine(Op);
-
-                OpProperties Property = OpProperties[Op];
-
-                switch (Property.OpMode)
-                {
-                    case OpMode.iABC:
-                        byte A = Reader.ReadByte();
-                        byte B = Reader.ReadByte();
-                        byte C = Reader.ReadByte();
-
-                        code.Add(new Instruction(Property, A, B, C));
-                        break;
-                    case OpMode.iABx:
-                        A = Reader.ReadByte();
-                        ushort Bx = Reader.ReadUInt16();
-
-                        code.Add(new Instruction(Property, A, Bx));
-                        break;
-                    case OpMode.iAsBx:
-                        A = Reader.ReadByte();
-                        short sBx = Reader.ReadInt16();
-
-                        code.Add(new Instruction(Property, A, sBx));
-                        break;
-                }
-
-                if (Property.HasPsuedo)
-                {
-                    uint sub = Reader.ReadUInt32();
-                    code.Add(new Instruction(sub));
-                }
-
-                Op = (OpCode)0;
+                size = v92 + 4 * k;
             }
 
-            return code;
+            // Console.WriteLine(size);
+
+            IList<int> lineinfo = new List<int>(size);
+
+            for (int i = 0; i < size; ++i)
+                lineinfo.Add(Reader.ReadByte());
+
+            return lineinfo;
+        }
+
+        private IList<int> ReadClosureIndexs()
+        {
+            int size = Reader.ReadByte();
+
+            IList<int> indexs = new List<int>(size);
+
+            while (indexs.Count < size)
+                indexs.Add(Reader.ReadInt32Compressed());
+
+            return indexs;
         }
 
         private IList<Constant> ReadConstants()
