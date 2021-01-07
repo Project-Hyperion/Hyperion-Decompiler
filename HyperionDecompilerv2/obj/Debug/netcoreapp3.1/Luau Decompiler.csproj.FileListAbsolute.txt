@@ -1,0 +1,13 @@
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.exe
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.deps.json
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.runtimeconfig.json
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.runtimeconfig.dev.json
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.dll
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\bin\Debug\netcoreapp3.1\Luau Decompiler.pdb
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.csprojAssemblyReference.cache
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.AssemblyInfoInputs.cache
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.AssemblyInfo.cs
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.csproj.CoreCompileInputs.cache
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.dll
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.pdb
+C:\Users\Max\Desktop\GitHub\Luau-Decompiler\HyperionDecompilerv2\obj\Debug\netcoreapp3.1\Luau Decompiler.genruntimeconfig.cache
