@@ -189,7 +189,7 @@ namespace HyperionDecompilerv2.Decompiler.Deserializer
             while (code.Count < size)
             {
                 OpCode Op = (OpCode)Reader.ReadByte();
-                Console.WriteLine(Op);
+                
                 OpProperties Property = OpProperties[Op];
 
                 switch (Property.OpMode)

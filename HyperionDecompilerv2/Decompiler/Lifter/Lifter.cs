@@ -150,6 +150,8 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
                             (calls for name index e.g. table.foreach).
                          */
 
+                        Console.WriteLine("Index1 {0}, Index2 {1}, Bx {2}", index1, index2, instruction.Bx);
+
                         IR.Expression expression = new IR.Global(GetConstant(constants[instruction.Bx]));
 
                         if (index1 > 1 && index2 >= 1)
@@ -333,7 +335,7 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
 
         private void FreeRegister(int register, List<IR.Statement> body)
         {
-            if (RegisterMap.Count == 0) return;
+            if (RegisterMap.Count - 1 < register) return;
 
             IR.LocalExpression local = RegisterMap[register];
 
