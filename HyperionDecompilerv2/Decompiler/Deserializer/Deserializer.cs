@@ -38,7 +38,9 @@ namespace HyperionDecompilerv2.Decompiler.Deserializer
             { OpCode.Jump, new OpProperties(OpCode.Jump, OpMode.iAsBx, false) },
             { OpCode.Test, new OpProperties(OpCode.Test, OpMode.iAsBx, false) },
             { OpCode.NotTest, new OpProperties(OpCode.NotTest, OpMode.iAsBx, false) },
-            { OpCode.Jump2, new OpProperties(OpCode.Jump2, OpMode.iABx, false) }
+            { OpCode.Jump2, new OpProperties(OpCode.Jump2, OpMode.iABx, false) },
+            { OpCode.SetTable, new OpProperties(OpCode.SetTable, OpMode.iABC, false) },
+            { OpCode.GetTable, new OpProperties(OpCode.GetTable, OpMode.iABC, false) }
         };
 
         public Chunk Deserialize()

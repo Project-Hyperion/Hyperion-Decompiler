@@ -23,6 +23,8 @@ namespace HyperionDecompilerv2.Decompiler.Deserializer.Models
         LoadConst = 0x6F,
         GetTableConst = 0x4D,
         SetTableConst = 0x30,
+        SetTable = 0x6A,
+        GetTable = 0x87,
         Move = 0x52,
         SetGlobal = 0x18,
         LoadNil = 0xC6,

@@ -150,7 +150,7 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
                             (calls for name index e.g. table.foreach).
                          */
 
-                        Console.WriteLine("Index1 {0}, Index2 {1}, Bx {2}", index1, index2, instruction.Bx);
+                        // Console.WriteLine("Index1 {0}, Index2 {1}, Bx {2}", index1, index2, instruction.Bx);
 
                         IR.Expression expression = new IR.Global(GetConstant(constants[instruction.Bx]));
 
@@ -201,6 +201,22 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
 
                         LoadRegister(instruction.A, expression, body);
                         break;
+                    case OpCode.GetTable:
+                        expression = GetRegister(instruction.B);
+                        IR.Expression expression1 = GetRegister(instruction.C);
+
+                        FreeRegister(instruction.B, body);
+                        FreeRegister(instruction.C, body);
+
+                        if (expression1 is IR.Constant)
+                        {
+                            constant = (IR.Constant)expression1;
+
+                            expression = new IR.NameIndex(expression, constant.String);
+                        }
+
+                        LoadRegister(instruction.A, expression, body);
+                        break;
                     case OpCode.SetGlobal:
                         sub = function.instructions[++i];
                         
@@ -237,6 +253,15 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
                          */
 
                         AddStatement(new IR.Assign(name_idx, expression), body);
+                        break;
+                    case OpCode.SetTable:
+                        expression = GetRegister(instruction.B);
+                        IR.Expression expression2 = GetRegister(instruction.C);
+
+                        FreeRegister(instruction.B, body);
+                        FreeRegister(instruction.C, body);
+
+                        AddStatement(new IR.Assign(expression, expression2), body);
                         break;
                     case OpCode.Call:
                         IList<IR.Expression> args = new List<IR.Expression>();
