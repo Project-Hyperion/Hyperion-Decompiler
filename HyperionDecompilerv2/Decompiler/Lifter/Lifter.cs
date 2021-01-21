@@ -21,7 +21,6 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
         {    
             return (IR.Function)LiftClosure(LuauChunk.closures[LuauChunk.closures.Count - 1]);
         }
-
         public IR.Expression LiftClosure(Function function)
         {
             this.function = function;
@@ -360,7 +359,7 @@ namespace HyperionDecompilerv2.Decompiler.Lifter
 
         private void FreeRegister(int register, List<IR.Statement> body)
         {
-            if (RegisterMap.Count - 1 < register) return;
+            // if (RegisterMap.Count - 1 < register) return;
 
             IR.LocalExpression local = RegisterMap[register];
 
